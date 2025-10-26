@@ -27,6 +27,7 @@ RunMenu()
                     self addOpt("PowerUp Options", ::newMenu, "PowerUp Options" + player GetEntityNumber());
                     self addOpt("Misc Options", ::newMenu, "Misc Options" + player GetEntityNumber());
                     self addOpt("Map Options", ::newMenu, "Map Options" + player GetEntityNumber());
+                    self addOpt("Movement Menu", ::newMenu, "Movement Menu" + player GetEntityNumber());
                     self addOpt("Menu Customization", ::newMenu, "Menu Customization");
                 }
                 if(self getVerification() > 1)  //  VIP
@@ -53,7 +54,8 @@ RunMenu()
         self addMenu("Personal Options" + player GetEntityNumber(), "Personal Options");
                 self addOptBool(player.godmode, "God Mode", ::Godmode, player);
                 self addOptBool(player.DemiGod, "Demi God", ::DemiGod, player);
-                self addOptBool(player.NoTarget, "No Target", ::NoTarget, player);               
+                self addOptBool(player.NoTarget, "No Target", ::NoTarget, player);
+                self addOptBool(player.SuperSpeed, "Super Speed", ::SuperSpeed, player);
             break;
             
             case "Fun Menu":
@@ -115,7 +117,12 @@ RunMenu()
                 self addOpt("Map Options", ::newMenu, "Map Options " + player GetEntityNumber());
             break;
 
-       
+        case "Movement Menu":
+            self addMenu("Movement Menu" + player GetEntityNumber(), "Movement Menu");
+                self addOptBool(player.SuperSpeed, "Super Speed", ::SuperSpeed, player);
+                self addOptBool(player.SuperJump, "Super Jump", ::SuperJump, player);
+                self addOptIntSlider("Jump Height", ::SetJumpHeight, 39, 100, 500, 10);
+            break;
 
         case "Menu Customization":
             self addMenu("Menu Customization", "Menu Customization");
