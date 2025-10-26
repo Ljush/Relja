@@ -119,12 +119,12 @@ SuperSpeed(player)
     
     if(isDefined(player.SuperSpeed))
     {
-        player SetMoveSpeedScale(2.0);  // 2x speed
+        player setmovespeedscale(2.0);  // 2x speed
         player iPrintLnBold("Super Speed ^2ON");
     }
     else
     {
-        player SetMoveSpeedScale(1.0);  // Normal speed
+        player setmovespeedscale(1.0);  // Normal speed
         player iPrintLnBold("Super Speed ^1OFF");
     }
 }
