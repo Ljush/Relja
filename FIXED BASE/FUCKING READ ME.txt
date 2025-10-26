@@ -1,0 +1,96 @@
+How to Add a Submenu and Options
+Add a New Case for the Submenu:
+
+Use a case statement for each submenu you want to add.
+The name inside the case and the name you pass to the addMenu function must match exactly—no spaces, extra characters, or differences in casing.
+Example:
+
+
+
+case "Test":
+    self addMenu("Test", "Test");
+    // Add options here
+break;
+In this example:
+
+"Test" is the name of the submenu.
+The self addMenu("Test", "Test"); call adds this submenu to the menu structure.
+Add Options Inside the Submenu:
+
+After you’ve defined the case, use self addOpt() to add options to the submenu. Each option can either run a function or toggle a setting.
+Example Options:
+
+
+
+self addOpt("Test Option", ::FunctionHere); // Adds an option that triggers 'FunctionHere' when selected.
+self addOpt("^3Test", ::FunctionHere);     // Adds a colored option (in this case, orange).
+self addOpt("Test Welcome Message", ::testWelcome); // Runs 'testWelcome' when selected.
+
+self addOptBool(self.godmode, "God Mode", ::Godmode, self); // Toggles god mode on/off.
+self addOptBool(self.testbool, "Bool Test", ::testbool, self); // Toggles a custom boolean on/off.
+
+self addOptIntSlider("Slider Int Test", ::testIntSlider, 1, 1, 5, 1); // Adds an integer slider (1-5).
+self addOptSlider("Slider String Test", ::testOptSlider, "Uno;Dos;Tres"); // Adds a string slider with values separated by semicolons.
+
+// Example of adding options in a loop:
+for (i = 0; i < 3; i++) {
+    self addOpt("For Each " + (i + 1)); // Adds "For Each 1", "For Each 2", etc.
+}
+Ensure Consistency in Naming:
+
+Always use the exact same name when adding a submenu. If the names in the case and addMenu function are not identical (including no extra spaces or characters), the submenu won’t work properly.
+Bad Example (Won't Work):
+
+
+
+case " Test ":              // Extra spaces
+    self addMenu("Test", "Test");
+break;
+Correct Example (Works):
+
+
+
+case "Test":
+    self addMenu("Test", "Test");
+break;
+Guidelines for Adding Options:
+Using addOpt() for Standard Options:
+
+This function adds a basic option that executes a specific function when selected.
+
+
+self addOpt("Option Name", ::FunctionName);
+Using addOptBool() for Boolean Toggles:
+
+This is used for options that toggle a true/false value (like enabling/disabling features).
+
+
+self addOptBool(variable, "Option Name", ::FunctionName, self);
+Using addOptIntSlider() for Integer Sliders:
+
+This creates an option with a slider for integer values. You define the min, max, and step values.
+
+
+self addOptIntSlider("Slider Name", ::FunctionName, initial_value, min_value, max_value, step_value);
+Using addOptSlider() for String Sliders:
+
+This is for sliders that toggle between string values, separated by semicolons (;).
+
+
+self addOptSlider("Slider Name", ::FunctionName, "Option1;Option2;Option3");
+Example of Adding a New Menu Option:
+
+
+self addOpt("Test", ::newMenu, "Test" + player GetEntityNumber());
+In this example:
+The option name is "Test".
+It calls the newMenu function.
+The third parameter ("Test" + player GetEntityNumber()) dynamically generates the submenu name, ensuring it's unique for each player.
+What to Avoid:
+Do not add extra spaces in the submenu names between case and addMenu.
+Ensure all names are identical—even a slight difference will break the functionality.
+By following these instructions, you’ll be able to add submenus and options without any issues!
+
+
+I DO NOT KNOW WHERE THIS MENU CAME FROM ORIGINALY,SOME ONE GAVE THIS TO ME,AND THEY GOT THIS FROM SOME WHERE ON GIT HUB,THIS IS NOT THE ORIGINAL PLACE EITHER
+https://github.com/NicoLeo13/Silverlines-BO3-GSC-Mod-Menu

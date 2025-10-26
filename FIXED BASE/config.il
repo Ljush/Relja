@@ -1,0 +1,1 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Project><Title>Silverlines-BO3-GSC-Mod-Menu-1.0</Title><Game>BO3</Game><Mode>ZM</Mode><Platform>Steam</Platform><Symbols>DEBUG;EXAMPLE</Symbols></Project>
