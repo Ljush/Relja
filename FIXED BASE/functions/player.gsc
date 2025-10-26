@@ -112,18 +112,18 @@ KickPlayer(player)
 
 SuperSpeedLoop()
 {
-    // Only boost horizontal (ground) movement
-    vel_2d = (velocity[0], velocity[1], 0);
-    speed_2d = length(vel_2d);
-    
-    // Only apply if moving (> 10) and below cap (< 350)
-    if(speed_2d > 10 && speed_2d < 350)
+    self endon("disconnect");
+    self endon("death");
+    self endon("end_super_speed");
+
+    while(isDefined(self.SuperSpeed))
     {
-        direction = VectorNormalize(vel_2d);  // Get movement direction
-        boost_amount = 12;                     // Constant boost per tick
-        
-        // Add boost in movement direction (not multiply!)
-        self SetVelocity((velocity[0] + boost, velocity[1] + boost, velocity[2]));
+        velocity = self GetVelocity();
+        if(length(velocity) > 0)
+        {
+            self SetVelocity((velocity[0] * 1.3, velocity[1] * 1.3, velocity[2]));
+        }
+        wait 0.05;
     }
 }
 
