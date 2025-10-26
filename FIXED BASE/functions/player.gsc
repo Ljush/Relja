@@ -144,30 +144,3 @@ SuperSpeed(player)
         player iPrintLnBold("Super Speed ^1OFF");
     }
 }
-
-SuperJump(player)
-{
-    player endon("disconnect");
-
-    player.SuperJump = isDefined(player.SuperJump) ? undefined : true;
-
-    if(isDefined(player.SuperJump))
-    {
-        player SetPlayerCollisionHeight(200);
-        player iPrintLnBold("Super Jump ^2ON");
-    }
-    else
-    {
-        player SetPlayerCollisionHeight(39);
-        player iPrintLnBold("Super Jump ^1OFF");
-    }
-}
-
-SetJumpHeight(height)
-{
-    if(!isDefined(height))
-        height = 39;
-
-    self SetPlayerCollisionHeight(height);
-    self iPrintLnBold("Jump Height: ^3" + height);
-}

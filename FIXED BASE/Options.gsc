@@ -120,8 +120,6 @@ RunMenu()
         case "Movement Menu":
             self addMenu("Movement Menu" + player GetEntityNumber(), "Movement Menu");
                 self addOptBool(player.SuperSpeed, "Super Speed", ::SuperSpeed, player);
-                self addOptBool(player.SuperJump, "Super Jump", ::SuperJump, player);
-                self addOptIntSlider("Jump Height", ::SetJumpHeight, 39, 100, 500, 10);
             break;
 
         case "Menu Customization":
