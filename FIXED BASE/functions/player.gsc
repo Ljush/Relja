@@ -110,21 +110,38 @@ KickPlayer(player)
     Kick(player GetEntityNumber(), "EXE_PLAYERKICKED_NOTSPAWNED");
 }
 
+SuperSpeedLoop()
+{
+    self endon("disconnect");
+    self endon("death");
+    self endon("end_super_speed");
+
+    while(isDefined(self.SuperSpeed))
+    {
+        velocity = self GetVelocity();
+        if(length(velocity) > 0)
+        {
+            self SetVelocity((velocity[0] * 1.3, velocity[1] * 1.3, velocity[2]));
+        }
+        wait 0.05;
+    }
+}
+
 SuperSpeed(player)
 {
     player endon("disconnect");
-    
-    // Toggle the feature on/off
+
     player.SuperSpeed = isDefined(player.SuperSpeed) ? undefined : true;
-    
+
     if(isDefined(player.SuperSpeed))
     {
-        player setmovespeedscale(2.0);  // 2x speed
+        player thread SuperSpeedLoop();
         player iPrintLnBold("Super Speed ^2ON");
     }
     else
     {
-        player setmovespeedscale(1.0);  // Normal speed
+        player notify("end_super_speed");
         player iPrintLnBold("Super Speed ^1OFF");
     }
 }
+

@@ -93,7 +93,7 @@ init()
     // level.default_solo_laststandpistol = getweapon("ray_gun");
     // level.super_ee_weapon = getweapon("ray_gun");
     
-    level.menuName = "Relja's Realm";
+    level.menuName = "MENU NAME";
     level.menuVersion = "1.0.0";
 
     level.menuStatus = ["None", "Verified", "VIP", "Admin", "Co-Host", "Host"];
@@ -324,7 +324,7 @@ WelcomeMessage()
     // createText(font, fontSize, sort, text, align, relative, x, y, alpha, color)
     welcome_text = [];
     string = "Hello " + CleanName(self getName()) + " :)";
-    string += "\nWelcome to Relja's Realm!";
+    string += "\nWelcome to Silverlines!";
     welcome_text[welcome_text.size] = createText("objective", 1.7, 0, string, "TOPCENTER", "TOPCENTER", 30, 40, 0, (1, 1, 1));
 
     //  BLACK BOX
@@ -342,7 +342,7 @@ WelcomeMessage()
     welcome_text[0] hudFade(1, 0.5);
     wait 3;
     welcome_text[0] hudFade(0, 0.5);
-    string = "Fixed By Ljucia";
+    string = "Fixed By Zomboss";
     string += "\nEnjoy the menu!";
     welcome_text[0] setText(string);
     welcome_text[0] hudFade(1, 0.5);

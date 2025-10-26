@@ -726,7 +726,7 @@ DoBottomText(player, text)
             self.menu["hud"]["BottomText"] hudFade(1, 1);
             wait 3;
             self.menu["hud"]["BottomText"] hudFade(0, 1);
-            self.menu["hud"]["BottomText"] setText("Fixed By ljush");
+            self.menu["hud"]["BottomText"] setText("Fixed By Zomboss");
             self.menu["hud"]["BottomText"] hudFade(1, 1);
             wait 3;
             self.menu["hud"]["BottomText"] hudFade(0, 1);
