@@ -118,11 +118,33 @@ SuperSpeedLoop()
 
     while(isDefined(self.SuperSpeed))
     {
+        // Get current velocity
         velocity = self GetVelocity();
-        if(length(velocity) > 0)
+
+        // Only work with horizontal (ground) movement
+        vel_2d = (velocity[0], velocity[1], 0);
+        speed_2d = length(vel_2d);
+
+        // Only boost if player is actually moving
+        if(speed_2d > 10)
         {
-            self SetVelocity((velocity[0] * 1.3, velocity[1] * 1.3, velocity[2]));
+            // Set speed cap to prevent going too fast
+            maxSpeed = 350;
+
+            if(speed_2d < maxSpeed)
+            {
+                // Get normalized direction of movement
+                direction = VectorNormalize(vel_2d);
+
+                // Add constant boost in movement direction (not multiply)
+                boost_amount = 12;
+                boost_vector = (direction[0] * boost_amount, direction[1] * boost_amount, 0);
+
+                // Apply boosted velocity (keep vertical velocity unchanged)
+                self SetVelocity((velocity[0] + boost_vector[0], velocity[1] + boost_vector[1], velocity[2]));
+            }
         }
+
         wait 0.05;
     }
 }
